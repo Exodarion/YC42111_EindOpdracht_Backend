@@ -1,4 +1,4 @@
-package com.RemonEva.opdracht;
+package com.Eindopdracht.opdracht;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.RemonEva.opdracht;
+package com.Eindopdracht.opdracht;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
