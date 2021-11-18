@@ -1,13 +1,13 @@
-package com.Eindopdracht.opdracht;
+package com.eva.SpringTutorial;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OpdrachtApplication {
+public class SpringTutorialApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OpdrachtApplication.class, args);
+		SpringApplication.run(SpringTutorialApplication.class, args);
 	}
 
 }

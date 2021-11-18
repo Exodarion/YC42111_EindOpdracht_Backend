@@ -1,10 +1,10 @@
-package com.Eindopdracht.opdracht;
+package com.eva.SpringTutorial;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OpdrachtApplicationTests {
+class SpringTutorialApplicationTests {
 
 	@Test
 	void contextLoads() {
