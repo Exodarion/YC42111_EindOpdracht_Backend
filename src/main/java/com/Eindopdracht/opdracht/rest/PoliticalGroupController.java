@@ -24,12 +24,12 @@ public class PoliticalGroupController {
 		this.politicalGroupService = politicalGroupService;
 	}
 	
-	@GetMapping (path = "/politicalGroup/list")
+	@GetMapping (path = "/list")
 	public List<PoliticalGroup> getPoliticalGroups(){
 		return politicalGroupService.getPoliticalGroups();
 	}
 	
-	@PostMapping ("/politicalGroup/add")
+	@PostMapping ("/add")
 	public void registerNewPoliticalGroup(@RequestBody PoliticalGroup politicalGroup) {
 		politicalGroupService.addNewPoliticalGroup(politicalGroup);
 	}

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -46,6 +47,10 @@ public class PoliticalGroup
 	}
 	public ArrayList<Candidate> getMembers() {
 		return members;
+	}
+	
+	public PoliticalGroupAlignment getPoliticalGroupAlignment() {
+		return pga;
 	}
 	public void setPoliticalGroupAlignment(PoliticalGroupAlignment alignment) {
 		pga = alignment;
