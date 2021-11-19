@@ -24,12 +24,12 @@ public class PoliticalGroup
 	//make this candidate later
 	//might want to use List<Candidate> members = new ArrayList<Candidate>();
 	private ArrayList<Candidate> members = new ArrayList<Candidate>();
+	private ArrayList<String> testList = new ArrayList<String>();
 	PoliticalGroupAlignment pga = PoliticalGroupAlignment.MIDDEN;
 	
 	public PoliticalGroup(){}
-	public PoliticalGroup(String name, ArrayList<Candidate> members, PoliticalGroupAlignment pga){
+	public PoliticalGroup(String name, PoliticalGroupAlignment pga){
 		this.name = name;
-		this.members = members;
 		this.pga = pga;
 	}
 	
@@ -45,15 +45,26 @@ public class PoliticalGroup
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ArrayList<Candidate> getMembers() {
-		return members;
-	}
 	
 	public PoliticalGroupAlignment getPoliticalGroupAlignment() {
 		return pga;
 	}
 	public void setPoliticalGroupAlignment(PoliticalGroupAlignment alignment) {
 		pga = alignment;
+	}
+	
+	public ArrayList<String> getTestList() {
+		return testList;
+	}
+	public void setTestList(ArrayList<String> testList) {
+		this.testList = testList;
+	}
+	
+	public ArrayList<Candidate> getMembers() {
+		return members;
+	}
+	public void setMembers(ArrayList<Candidate> members) {
+		this.members = members;
 	}
 	
    @Override
