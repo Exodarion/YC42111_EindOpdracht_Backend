@@ -18,12 +18,19 @@ public class PoliticalGroup
 	@Column(name = "id", updatable = false)
     private Long id;
 	
-	private String name;
+	private String name = "placeholder";
 	
 	//make this candidate later
 	//might want to use List<Candidate> members = new ArrayList<Candidate>();
 	private ArrayList<Candidate> members = new ArrayList<Candidate>();
 	PoliticalGroupAlignment pga = PoliticalGroupAlignment.MIDDEN;
+	
+	public PoliticalGroup(){}
+	public PoliticalGroup(String name, ArrayList<Candidate> members, PoliticalGroupAlignment pga){
+		this.name = name;
+		this.members = members;
+		this.pga = pga;
+	}
 	
 	public Long getId() {
 		return id;
@@ -47,10 +54,11 @@ public class PoliticalGroup
    @Override
     public String toString() 
    {
-        return "Student{" +
+        return "PoliticalGroup{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", members='" + members.toString() + '\'' +
+                ", pga='" + pga + '\'' +
                 '}';
     }
 }
