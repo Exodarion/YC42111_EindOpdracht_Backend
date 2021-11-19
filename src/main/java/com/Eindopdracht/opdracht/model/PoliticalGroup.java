@@ -1,4 +1,4 @@
-package com.Eindopdracht.opdracht.politicalGroup;
+package com.Eindopdracht.opdracht.model;
 
 import java.util.ArrayList;
 
