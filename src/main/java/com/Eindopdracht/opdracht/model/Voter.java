@@ -1,5 +1,50 @@
 package com.Eindopdracht.opdracht.model;
 
-public class Voter {
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class Voter extends Human{
+	
+	@Column(name = "email", nullable = false)
+	private String email;
+	private String residence;
+	
+	public Voter() {
+		
+	}
+	public Voter(Long id, String firstName, String lastName, LocalDate dob, String email, String residence) {
+		super(id, firstName, lastName, dob);
+		this.email = email;
+		this.residence = residence;
+	}
+	public Voter(String firstName, String lastName, LocalDate dob, String email, String residence) {
+		super(firstName, lastName, dob);
+		this.email = email;
+		this.residence = residence;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getResidence() {
+		return residence;
+	}
+	public void setResidence(String residence) {
+		this.residence = residence;
+	}
+	@Override
+	public String toString() {
+		// super();
+		return "Voter [email=" + email + ", residence=" + residence + "]";
+	}
+	
+	
 
 }
