@@ -17,7 +17,7 @@ public abstract class Human {
 	@Id
 	@SequenceGenerator(name = "human_sequence", sequenceName = "human_sequence", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "human_sequence")
-	@Column(name = "id", updatable = false)
+	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 	private String firstName;
 	private String lastName;

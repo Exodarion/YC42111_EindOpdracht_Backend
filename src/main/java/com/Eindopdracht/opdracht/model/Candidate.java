@@ -7,31 +7,32 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table
 public class Candidate extends Human{
-	private String group;
-	private String expertise;
 	
+	@Column(name = "politicalParty")
+	private String politicalParty;
+	private String expertise;
+
 	public Candidate() {
 	}
 
-	public Candidate(String firstName, String lastName, LocalDate dob, String group, String expertise) {
+	public Candidate(String firstName, String lastName, LocalDate dob, String politicalParty, String expertise) {
 		super(firstName, lastName, dob);
-		this.group = group;
-		this.expertise = expertise;
+		this.politicalParty = politicalParty;
+		this.expertise = expertise;	
 	}
 	
-	public Candidate(String firstName, String lastName, LocalDate dob, String group) {
+	public Candidate(String firstName, String lastName, LocalDate dob, String politicalParty) {
 		super(firstName, lastName, dob);
-		this.group = group;
+		this.politicalParty = politicalParty;		
 	}
 
-	public String getGroup() {
-		return group;
+	public String getPoliticalParty() {
+		return politicalParty;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setPoliticalParty(String politicalParty) {
+		this.politicalParty = politicalParty;
 	}
 
 	public String getExpertise() {
@@ -44,9 +45,9 @@ public class Candidate extends Human{
 
 	@Override
 	public String toString() {
-		return "Candidate " + super.toString() + "[group=" + group + ", expertise=" + expertise + "]";
+		return "Candidate "+ super.toString() + " "  + "politicalParty=" + politicalParty + ", expertise=" + expertise + "]";
 	}
 	
 	
-
+	
 }
