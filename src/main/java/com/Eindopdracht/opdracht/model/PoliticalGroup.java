@@ -1,19 +1,62 @@
 package com.Eindopdracht.opdracht.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import antlr.collections.List;
 
 @Entity
 @Table
-public class PoliticalGroup {
-	String name;
+public class PoliticalGroup 
+{
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id", updatable = false)
+    private Long id;
 	
-	//make this candidate later
-	//might want to use List<Candidate> members = new ArrayList<Candidate>();
-	private ArrayList<String> members = new ArrayList<String>();
+	private String name = "placeholder";
+	
 	PoliticalGroupAlignment pga = PoliticalGroupAlignment.MIDDEN;
+	
+	public PoliticalGroup(){}
+	public PoliticalGroup(String name, PoliticalGroupAlignment pga){
+		this.name = name;
+		this.pga = pga;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public PoliticalGroupAlignment getpga() {
+		return pga;
+	}
+	public void setpga(PoliticalGroupAlignment alignment) {
+		pga = alignment;
+	}
+	
+	
+   @Override
+    public String toString() 
+   {
+        return "PoliticalGroup{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pga='" + pga + '\'' +
+                '}';
+    }
 }

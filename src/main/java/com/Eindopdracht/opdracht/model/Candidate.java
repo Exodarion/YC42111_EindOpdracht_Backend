@@ -48,6 +48,4 @@ public class Candidate extends Human{
 		return "Candidate "+ super.toString() + " "  + "politicalParty=" + politicalParty + ", expertise=" + expertise + "]";
 	}
 	
-	
-	
 }
