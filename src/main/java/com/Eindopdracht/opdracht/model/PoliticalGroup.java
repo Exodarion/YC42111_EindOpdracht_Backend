@@ -1,13 +1,13 @@
 package com.Eindopdracht.opdracht.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -21,10 +21,7 @@ public class PoliticalGroup
 	
 	private String name = "placeholder";
 	
-	//make this candidate later
-	//might want to use List<Candidate> members = new ArrayList<Candidate>();
-	private ArrayList<Candidate> members = new ArrayList<Candidate>();
-	private ArrayList<String> testList = new ArrayList<String>();
+	private ArrayList<Voter> members = new ArrayList<Voter>();
 	PoliticalGroupAlignment pga = PoliticalGroupAlignment.MIDDEN;
 	
 	public PoliticalGroup(){}
@@ -46,25 +43,18 @@ public class PoliticalGroup
 		this.name = name;
 	}
 	
-	public PoliticalGroupAlignment getPoliticalGroupAlignment() {
+	public PoliticalGroupAlignment getpga() {
 		return pga;
 	}
-	public void setPoliticalGroupAlignment(PoliticalGroupAlignment alignment) {
+	public void setpga(PoliticalGroupAlignment alignment) {
 		pga = alignment;
 	}
 	
-	public ArrayList<String> getTestList() {
-		return testList;
-	}
-	public void setTestList(ArrayList<String> testList) {
-		this.testList = testList;
-	}
-	
-	public ArrayList<Candidate> getMembers() {
+	public ArrayList<Voter> getMembers() {
 		return members;
 	}
-	public void setMembers(ArrayList<Candidate> members) {
-		this.members = members;
+	public void addMember(Voter voter) {
+		this.members.add(voter);
 	}
 	
    @Override

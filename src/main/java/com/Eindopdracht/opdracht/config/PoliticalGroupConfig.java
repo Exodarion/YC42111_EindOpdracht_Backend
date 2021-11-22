@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import com.Eindopdracht.opdracht.model.Candidate;
 import com.Eindopdracht.opdracht.model.PoliticalGroup;
 import com.Eindopdracht.opdracht.model.PoliticalGroupAlignment;
+import com.Eindopdracht.opdracht.model.Voter;
 import com.Eindopdracht.opdracht.repository.PoliticalGroupRepository;
 
 @Configuration
@@ -21,21 +22,14 @@ public class PoliticalGroupConfig {
 		return args -> 
 		{
 			PoliticalGroup pvda = new PoliticalGroup("pvda", PoliticalGroupAlignment.LINKS);
-			//pvda.addMember(new Candidate("Lilianne", "Ploumen", LocalDate.of(1962, 7, 12)));
-			//pvda.addMember(new Candidate("Khadija", "Arib", LocalDate.of(1960, 10, 10)));
-			//pvda.setMembers(new Candidate());
+			//pvda.addMember(new Voter("Lilianne", "Ploumen", LocalDate.of(1962, 7, 12), "Email1", "Residence1"));
+			//pvda.addMember(new Voter("Khadija", "Arib", LocalDate.of(1960, 10, 10), "Email2", "Residence2"));
 			
-			ArrayList<String> tempList = new ArrayList<String>();
-			tempList.add("test1");
-			tempList.add("test2");
-			pvda.setTestList(tempList);
-			
-			ArrayList<Candidate> pvvMembers = new ArrayList<Candidate>();
-			pvvMembers.add(new Candidate("Geert", "Wilders", LocalDate.of(1963, 9, 6)));
-			pvvMembers.add(new Candidate("Khadija", "Arib", LocalDate.of(1976, 9, 16)));
 			PoliticalGroup pvv = new PoliticalGroup("pvv", PoliticalGroupAlignment.RECHTS);
+//			pvv.addMember(new Candidate("Geert", "Wilders", LocalDate.of(1963, 9, 6)));
+//			pvv.addMember(new Candidate("Khadija", "Arib", LocalDate.of(1976, 9, 16)));
 			
-			politicalGroupRepository.saveAll(List.of(pvda, pvv));
+			politicalGroupRepository.save(pvda);
 		};
 	}
 }
