@@ -21,7 +21,6 @@ public class PoliticalGroup
 	
 	private String name = "placeholder";
 	
-	private ArrayList<Voter> members = new ArrayList<Voter>();
 	PoliticalGroupAlignment pga = PoliticalGroupAlignment.MIDDEN;
 	
 	public PoliticalGroup(){}
@@ -50,12 +49,6 @@ public class PoliticalGroup
 		pga = alignment;
 	}
 	
-	public ArrayList<Voter> getMembers() {
-		return members;
-	}
-	public void addMember(Voter voter) {
-		this.members.add(voter);
-	}
 	
    @Override
     public String toString() 
@@ -63,7 +56,6 @@ public class PoliticalGroup
         return "PoliticalGroup{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", members='" + members.toString() + '\'' +
                 ", pga='" + pga + '\'' +
                 '}';
     }

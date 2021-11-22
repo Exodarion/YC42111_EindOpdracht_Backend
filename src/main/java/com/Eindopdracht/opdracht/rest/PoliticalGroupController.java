@@ -33,17 +33,6 @@ public class PoliticalGroupController {
 		return politicalGroupService.getPoliticalGroups();
 	}
 	
-	@GetMapping (path = "/testList")
-	public String testCandidate()
-	{
-		PoliticalGroup pvda = new PoliticalGroup("pvda", PoliticalGroupAlignment.LINKS);
-		//pvda.addMember(new Candidate("Lilianne", "Ploumen", LocalDate.of(1962, 7, 12)));
-		//pvda.addMember(new Candidate("Khadija", "Arib", LocalDate.of(1960, 10, 10)));
-		
-		//politicalGroupService.addNewPoliticalGroup(pvda);
-		return "Hello";
-	}
-	
 	@PostMapping ("/add")
 	public void registerNewPoliticalGroup(@RequestBody PoliticalGroup politicalGroup) {
 		politicalGroupService.addNewPoliticalGroup(politicalGroup);

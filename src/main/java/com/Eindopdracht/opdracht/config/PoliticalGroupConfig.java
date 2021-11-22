@@ -21,15 +21,10 @@ public class PoliticalGroupConfig {
 	{
 		return args -> 
 		{
-			PoliticalGroup pvda = new PoliticalGroup("pvda", PoliticalGroupAlignment.LINKS);
-			//pvda.addMember(new Voter("Lilianne", "Ploumen", LocalDate.of(1962, 7, 12), "Email1", "Residence1"));
-			//pvda.addMember(new Voter("Khadija", "Arib", LocalDate.of(1960, 10, 10), "Email2", "Residence2"));
-			
+			PoliticalGroup pvda = new PoliticalGroup("pvda", PoliticalGroupAlignment.LINKS);		
 			PoliticalGroup pvv = new PoliticalGroup("pvv", PoliticalGroupAlignment.RECHTS);
-//			pvv.addMember(new Candidate("Geert", "Wilders", LocalDate.of(1963, 9, 6)));
-//			pvv.addMember(new Candidate("Khadija", "Arib", LocalDate.of(1976, 9, 16)));
 			
-			politicalGroupRepository.save(pvda);
+			politicalGroupRepository.saveAll(List.of(pvda, pvv));
 		};
 	}
 }
