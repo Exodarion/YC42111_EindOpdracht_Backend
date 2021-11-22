@@ -7,17 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity
-@Table
+@MappedSuperclass
 public abstract class Human {
 	
 	@Id
 	@SequenceGenerator(name = "human_sequence", sequenceName = "human_sequence", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "human_sequence")
-	@Column(name = "id", updatable = false)
+	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -32,12 +32,6 @@ public abstract class Human {
 	public Human() {
 	}
 	
-	public Human(Long id, String firstName, String lastName, LocalDate dob) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dob = dob;
-	}
 	public String getFirstName() {
 		return firstName;
 	}

@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table
 public class Voter extends Human{
 	
 	@Column(name = "email", nullable = false)
@@ -17,11 +16,7 @@ public class Voter extends Human{
 	public Voter() {
 		
 	}
-	public Voter(Long id, String firstName, String lastName, LocalDate dob, String email, String residence) {
-		super(id, firstName, lastName, dob);
-		this.email = email;
-		this.residence = residence;
-	}
+	
 	public Voter(String firstName, String lastName, LocalDate dob, String email, String residence) {
 		super(firstName, lastName, dob);
 		this.email = email;
@@ -41,8 +36,7 @@ public class Voter extends Human{
 	}
 	@Override
 	public String toString() {
-		// super();
-		return "Voter [email=" + email + ", residence=" + residence + "]";
+		return "Voter " + super.toString() + "[email=" + email + ", residence=" + residence + "]";
 	}
 	
 	
