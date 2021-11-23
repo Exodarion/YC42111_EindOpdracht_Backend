@@ -11,5 +11,5 @@ import com.Eindopdracht.opdracht.model.PoliticalGroup;
 
 
 public interface CandidateRepository extends JpaRepository<Candidate, Long> {
-	List<Candidate> findByPoliticalParty (PoliticalGroup politicalGroup);
+	List<Candidate> findByPoliticalGroup (PoliticalGroup politicalGroup);
 }

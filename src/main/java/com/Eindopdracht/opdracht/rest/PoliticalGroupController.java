@@ -34,11 +34,12 @@ public class PoliticalGroupController {
 		return politicalGroupService.getPoliticalGroups();
 	}
 	
-//	@GetMapping (path = "/members/{id}")
-//	public List<Candidate> showMembers(@PathVariable long id){
-//		return ;
-//	}
-//	
+	@GetMapping (path = "/members/{id}")
+	public List<Candidate> showMembers(@PathVariable long id){
+		PoliticalGroup group = politicalGroupService.findById(id);
+		return politicalGroupService.showMembers(group);
+	}
+	
 	@PostMapping ("/add")
 	public void registerNewPoliticalGroup(@RequestBody PoliticalGroup politicalGroup) {
 		politicalGroupService.addNewPoliticalGroup(politicalGroup);
