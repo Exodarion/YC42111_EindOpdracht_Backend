@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,52 +26,50 @@ import com.Eindopdracht.opdracht.repository.CandidateRepository;
 public class PoliticalGroup 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "id", updatable = false)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
     private Long id;
 	
-	private String name = "placeholder";
+	private String name;
 	
 	@OneToMany(mappedBy = "politicalParty")
 	private List<Candidate> members;
 	
-	PoliticalGroupAlignment pga = PoliticalGroupAlignment.MIDDEN;
-	
-	public PoliticalGroup(){}
-	public PoliticalGroup(String name, PoliticalGroupAlignment pga){
-		this.name = name;
-		this.pga = pga;
-	}
-	
+	@Enumerated(EnumType.STRING )
+	PoliticalGroupAlignment pga;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public PoliticalGroupAlignment getpga() {
+
+	public List<Candidate> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<Candidate> members) {
+		this.members = members;
+	}
+
+	public PoliticalGroupAlignment getPga() {
 		return pga;
 	}
-	public void setpga(PoliticalGroupAlignment alignment) {
-		pga = alignment;
+
+	public void setPga(PoliticalGroupAlignment pga) {
+		this.pga = pga;
 	}
 	
 	
-   @Override
-    public String toString() 
-   {
-        return "PoliticalGroup{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", pga='" + pga + '\'' +
-                '}';
-    }
 
 }
