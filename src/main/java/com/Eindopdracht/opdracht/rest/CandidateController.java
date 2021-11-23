@@ -33,6 +33,8 @@ public class CandidateController {
 	
 	@GetMapping("/list")
 	public List<Candidate> getCandidates(){
+
 		return candidateService.getCandidatesFindAll();
+
 	}
 }

@@ -3,6 +3,9 @@ package com.Eindopdracht.opdracht;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.Eindopdracht.opdracht.model.Candidate;
+import com.Eindopdracht.opdracht.service.CandidateService;
+
 
 
 @SpringBootApplication

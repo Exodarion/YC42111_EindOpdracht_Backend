@@ -24,6 +24,7 @@ public class CandidateService {
 		return candidateRepository.findAll();
 	}
 	
+
 //	public List<Candidate> getCandidatesByParty (PoliticalGroup politicalGroup){
 //		return candidateRepository.findByPoliticalParty(politicalGroup);
 //	}
