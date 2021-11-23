@@ -4,25 +4,54 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-public class Candidate extends Human{
+public class Candidate {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long id;
+	
+	String firstName;
+	
+	String lastName;
 	
 	@ManyToOne()
+	@JsonIgnore
 	private PoliticalGroup politicalParty;
+	
 	private String expertise;
 
-	public Candidate() {
+	public Long getId() {
+		return id;
 	}
 
-	public Candidate(String firstName, String lastName, LocalDate dob, PoliticalGroup politicalParty, String expertise) {
-		super(firstName, lastName, dob);
-		this.politicalParty = politicalParty;
-		this.expertise = expertise;	
+	public void setId(Long id) {
+		this.id = id;
 	}
-	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public PoliticalGroup getPoliticalParty() {
 		return politicalParty;
 	}
@@ -39,9 +68,6 @@ public class Candidate extends Human{
 		this.expertise = expertise;
 	}
 
-	@Override
-	public String toString() {
-		return "Candidate "+ super.toString() + " "  + "politicalParty=" + politicalParty + ", expertise=" + expertise + "]";
-	}
+	
 	
 }
