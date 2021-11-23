@@ -1,6 +1,7 @@
 package com.Eindopdracht.opdracht.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,8 +34,12 @@ public class PoliticalGroupController {
 	
 	@GetMapping (path = "/members/{id}")
 	public List<Candidate> showMembers(@PathVariable long id){
-		PoliticalGroup group = politicalGroupService.findById(id);
-		return politicalGroupService.showMembers(group);
+		// checken of id bestaat
+		Optional <PoliticalGroup> group = politicalGroupService.findById(id);
+		if (group.isPresent())
+		return politicalGroupService.showMembers(group.get());
+		else
+			return null;
 	}
 	
 	@PostMapping ("/add")
