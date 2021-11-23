@@ -2,13 +2,22 @@ package com.Eindopdracht.opdracht.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
+import com.Eindopdracht.opdracht.repository.CandidateRepository;
 
 @Entity
 @Table
@@ -20,6 +29,9 @@ public class PoliticalGroup
     private Long id;
 	
 	private String name = "placeholder";
+	
+	@OneToMany(mappedBy = "politicalParty")
+	private List<Candidate> members;
 	
 	PoliticalGroupAlignment pga = PoliticalGroupAlignment.MIDDEN;
 	
@@ -59,4 +71,5 @@ public class PoliticalGroup
                 ", pga='" + pga + '\'' +
                 '}';
     }
+
 }
