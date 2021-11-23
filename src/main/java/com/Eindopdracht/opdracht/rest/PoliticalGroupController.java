@@ -3,6 +3,7 @@ package com.Eindopdracht.opdracht.rest;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,10 +35,15 @@ public class PoliticalGroupController {
 		return politicalGroupService.getPoliticalGroups();
 	}
 	
-	@GetMapping (path = "/members/{id}")
+	@GetMapping (path = "/memberByID/{id}")
 	public List<Candidate> showMembers(@PathVariable long id){
 		PoliticalGroup group = politicalGroupService.findById(id);
 		return politicalGroupService.showMembers(group);
+	}
+	
+	@GetMapping (path = "/memberByName/{firstname}")
+	public Optional<Candidate> showCandidateByFirstName(@PathVariable String firstname){
+		return politicalGroupService.showCandidateByFirstName(firstname);
 	}
 	
 	@PostMapping ("/add")

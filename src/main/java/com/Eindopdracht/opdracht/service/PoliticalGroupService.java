@@ -1,5 +1,6 @@
 package com.Eindopdracht.opdracht.service;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,6 @@ public class PoliticalGroupService
 {
 	private final PoliticalGroupRepository politicalGroupRepository;
 	private final CandidateRepository candidateRepository;
-	
 	
 	public PoliticalGroupService(PoliticalGroupRepository politicalGroupRepository,
 			CandidateRepository candidateRepository) {
@@ -35,7 +35,12 @@ public class PoliticalGroupService
 		return candidateRepository.findByPoliticalGroup(politicalGroup);
 	}
 	
+	public Optional<Candidate> showCandidateByFirstName(String firstname){
+		return candidateRepository.findByFirstName(firstname);
+	}
+	
 	public PoliticalGroup findById(long id) {
 		return politicalGroupRepository.findById(id).get();
 	}
+
 }

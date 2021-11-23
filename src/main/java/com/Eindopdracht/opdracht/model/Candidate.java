@@ -18,6 +18,7 @@ public class Candidate {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
+	@Column(length = 50)
 	String firstName;
 	
 	String lastName;
