@@ -1,27 +1,25 @@
 package com.Eindopdracht.opdracht.model;
 
-import java.time.LocalDate;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.time.LocalDate;
 
 @Entity
 public class Candidate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
+	private Long id;
 	
-	String firstName;
-	
-	String lastName;
-	
+	private String firstName;
+	private String lastName;
+	private LocalDate dob;
+
 	@ManyToOne()
 	@JsonIgnore
 	private PoliticalGroup politicalGroup;
@@ -51,7 +49,6 @@ public class Candidate {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
 
 	public PoliticalGroup getPoliticalGroup() {
 		return politicalGroup;
@@ -69,6 +66,11 @@ public class Candidate {
 		this.expertise = expertise;
 	}
 
-	
-	
+	public LocalDate getDob() {
+		return dob;
+	}
+
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
 }

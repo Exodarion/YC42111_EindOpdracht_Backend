@@ -1,6 +1,5 @@
 package com.Eindopdracht.opdracht.rest;
 
-import java.nio.file.Path;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +35,4 @@ public class VoterController {
 	public void registerNewVoter(@RequestBody Voter voter) {
 		voterService.addNewVoter(voter);
 	}
-
 }
