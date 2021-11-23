@@ -4,47 +4,65 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
-public class Voter extends Human{
+public class Voter {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long id;
+	
+	String firstName;
+	
+	String lastName;
 	
 	@Column(name = "email", nullable = false)
 	private String email;
-	private String residence;
 	
-	public Voter() {
-		
+	private String residence;
+
+	public Long getId() {
+		return id;
 	}
-	public Voter(Long id, String firstName, String lastName, LocalDate dob, String email, String residence) {
-		super(id, firstName, lastName, dob);
-		this.email = email;
-		this.residence = residence;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public Voter(String firstName, String lastName, LocalDate dob, String email, String residence) {
-		super(firstName, lastName, dob);
-		this.email = email;
-		this.residence = residence;
+
+	public String getFirstName() {
+		return firstName;
 	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getResidence() {
 		return residence;
 	}
+
 	public void setResidence(String residence) {
 		this.residence = residence;
 	}
-	@Override
-	public String toString() {
-		// super();
-		return "Voter [email=" + email + ", residence=" + residence + "]";
-	}
 	
 	
-
 }

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Eindopdracht.opdracht.model.Voter;
 import com.Eindopdracht.opdracht.service.VoterService;
 
+
+@CrossOrigin(maxAge = 3600)
 @RestController
 @CrossOrigin (maxAge = 3600)
 @RequestMapping(path = "/voter")
