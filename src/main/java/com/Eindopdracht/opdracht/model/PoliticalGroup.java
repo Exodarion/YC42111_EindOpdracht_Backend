@@ -32,7 +32,7 @@ public class PoliticalGroup
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "politicalParty")
+	@OneToMany(mappedBy = "politicalGroup")
 	private List<Candidate> members;
 	
 	@Enumerated(EnumType.STRING )

@@ -24,7 +24,7 @@ public class Candidate {
 	
 	@ManyToOne()
 	@JsonIgnore
-	private PoliticalGroup politicalParty;
+	private PoliticalGroup politicalGroup;
 	
 	private String expertise;
 
@@ -51,13 +51,14 @@ public class Candidate {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
 
-	public PoliticalGroup getPoliticalParty() {
-		return politicalParty;
+	public PoliticalGroup getPoliticalGroup() {
+		return politicalGroup;
 	}
 
-	public void setPoliticalParty(PoliticalGroup politicalParty) {
-		this.politicalParty = politicalParty;
+	public void setPoliticalGroup(PoliticalGroup politicalGroup) {
+		this.politicalGroup = politicalGroup;
 	}
 
 	public String getExpertise() {
