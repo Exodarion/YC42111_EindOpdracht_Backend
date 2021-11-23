@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import com.Eindopdracht.opdracht.model.Voter;
 import com.Eindopdracht.opdracht.service.VoterService;
 
 @RestController
+@CrossOrigin (maxAge = 3600)
 @RequestMapping(path = "/voter")
 public class VoterController {
 	private final VoterService voterService;
