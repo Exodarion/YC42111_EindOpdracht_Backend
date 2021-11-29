@@ -2,12 +2,32 @@ package com.Eindopdracht.opdracht.dto;
 
 import java.time.LocalDate;
 
+import com.Eindopdracht.opdracht.model.Candidate;
+
 public class CandidateDTO {
 	private long id;
 	private String firstName;
 	private String lastName;
 	private long partyID;
+	private String politicalGroupName;
 	private LocalDate dob;
+	
+	public CandidateDTO() {}
+	public CandidateDTO(Candidate candidate) 
+	{
+		this.firstName = candidate.getFirstName();
+		this.lastName = candidate.getLastName();
+	};
+	public CandidateDTO(long id, String firstName, String lastName, long partyID, String politicalGroupName, LocalDate dob) 
+	{
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.partyID = partyID;
+		this.politicalGroupName = politicalGroupName;
+		this.dob = dob; 
+	} 
+	
 	public long getId() {
 		return id;
 	}
@@ -37,6 +57,12 @@ public class CandidateDTO {
 	}
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
+	}
+	public String getPoliticalGroupName() {
+		return politicalGroupName;
+	}
+	public void setPoliticalGroupName(String politicalGroupName) {
+		this.politicalGroupName = politicalGroupName;
 	}
 	
 	

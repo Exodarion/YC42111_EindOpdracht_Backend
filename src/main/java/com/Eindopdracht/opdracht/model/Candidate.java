@@ -30,16 +30,6 @@ public class Candidate {
 	private PoliticalGroup politicalGroup;
 	
 	private String expertise;
-	
-	private String politicalGroupName;
-
-	public String getPoliticalGroupName() {
-		return politicalGroupName;
-	}
-
-	public void setPoliticalGroupName(String politicalGroupName) {
-		this.politicalGroupName = politicalGroupName;
-	}
 
 	public Long getId() {
 		return id;

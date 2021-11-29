@@ -46,18 +46,22 @@ public class PoliticalGroupController {
 	@GetMapping (path = "/memberByName/{firstname}")
 	public CandidateDTO showCandidateFirstName(@PathVariable String firstname)
 	{	
+		//Get this Optional<Candidate> by its firstname and save into a regular Candidate object by using '.get()'
+		Candidate candidate = politicalGroupService.findCandidateByFirstName(firstname).get();
+		
+		//Get the political group reference from the candidate
+		PoliticalGroup pg = candidate.getPoliticalGroup();
+		
 		//instantiate new DTO from the Candidate
-		CandidateDTO candidateDTO = new CandidateDTO();
-		
-		//Get this candidate by its firstname
-		Optional<Candidate> candidate = politicalGroupService.findCandidateByFirstName(firstname);
-		
-		//set data to be carried over
-		candidateDTO.setFirstName(candidate.get().getFirstName());
-		candidateDTO.setLastName(candidate.get().getLastName());
-		candidateDTO.setId(candidate.get().getId());
-		
-		return candidateDTO;			
+		return new CandidateDTO
+		(
+			candidate.getId(),
+			candidate.getFirstName(),
+			candidate.getLastName(),
+			pg.getId(),
+			pg.getName(),
+			candidate.getDob()
+		);		
 	}
 	
 	@PostMapping ("/add")
