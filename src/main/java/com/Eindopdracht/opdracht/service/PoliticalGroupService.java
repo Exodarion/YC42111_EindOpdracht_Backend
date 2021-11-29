@@ -35,12 +35,12 @@ public class PoliticalGroupService
 		return candidateRepository.findByPoliticalGroup(politicalGroup);
 	}
 	
-	public Optional<Candidate> showCandidateByFirstName(String firstname){
+	public Optional<Candidate> findCandidateByFirstName(String firstname){
 		return candidateRepository.findByFirstName(firstname);
 	}
 	
-	public PoliticalGroup findById(long id) {
-		return politicalGroupRepository.findById(id).get();
+	public Optional<PoliticalGroup> findById(long id) {
+		return politicalGroupRepository.findById(id);
 	}
 
 }

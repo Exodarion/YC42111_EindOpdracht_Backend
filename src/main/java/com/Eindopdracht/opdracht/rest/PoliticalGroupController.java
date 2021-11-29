@@ -1,7 +1,5 @@
 package com.Eindopdracht.opdracht.rest;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Eindopdracht.opdracht.dto.CandidateDTO;
 import com.Eindopdracht.opdracht.model.Candidate;
 import com.Eindopdracht.opdracht.model.PoliticalGroup;
-import com.Eindopdracht.opdracht.model.PoliticalGroupAlignment;
 import com.Eindopdracht.opdracht.service.PoliticalGroupService;
 
 @RestController
@@ -37,13 +35,29 @@ public class PoliticalGroupController {
 	
 	@GetMapping (path = "/memberByID/{id}")
 	public List<Candidate> showMembers(@PathVariable long id){
-		PoliticalGroup group = politicalGroupService.findById(id);
-		return politicalGroupService.showMembers(group);
+		// checken of id bestaat
+		Optional <PoliticalGroup> group = politicalGroupService.findById(id);
+		if (group.isPresent())
+			return politicalGroupService.showMembers(group.get());
+		else
+			return null;
 	}
 	
 	@GetMapping (path = "/memberByName/{firstname}")
-	public Optional<Candidate> showCandidateByFirstName(@PathVariable String firstname){
-		return politicalGroupService.showCandidateByFirstName(firstname);
+	public CandidateDTO showCandidateFirstName(@PathVariable String firstname)
+	{	
+		//instantiate new DTO from the Candidate
+		CandidateDTO candidateDTO = new CandidateDTO();
+		
+		//Get this candidate by its firstname
+		Optional<Candidate> candidate = politicalGroupService.findCandidateByFirstName(firstname);
+		
+		//set data to be carried over
+		candidateDTO.setFirstName(candidate.get().getFirstName());
+		candidateDTO.setLastName(candidate.get().getLastName());
+		candidateDTO.setId(candidate.get().getId());
+		
+		return candidateDTO;			
 	}
 	
 	@PostMapping ("/add")

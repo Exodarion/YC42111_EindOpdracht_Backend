@@ -14,13 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-
-import com.Eindopdracht.opdracht.repository.CandidateRepository;
-
 @Entity
 @Table
 public class PoliticalGroup 
@@ -69,7 +62,4 @@ public class PoliticalGroup
 	public void setPga(PoliticalGroupAlignment pga) {
 		this.pga = pga;
 	}
-	
-	
-
 }
