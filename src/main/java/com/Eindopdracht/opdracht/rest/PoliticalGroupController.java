@@ -1,7 +1,5 @@
 package com.Eindopdracht.opdracht.rest;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,38 +14,44 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Eindopdracht.opdracht.model.Candidate;
 import com.Eindopdracht.opdracht.model.PoliticalGroup;
-import com.Eindopdracht.opdracht.model.PoliticalGroupAlignment;
 import com.Eindopdracht.opdracht.service.PoliticalGroupService;
 
 @RestController
-@CrossOrigin (maxAge = 3600)
+@CrossOrigin(maxAge = 3600)
 @RequestMapping(path = "/politicalGroup")
 public class PoliticalGroupController {
-	private final PoliticalGroupService politicalGroupService;
-	
-	@Autowired
-	public PoliticalGroupController(PoliticalGroupService politicalGroupService) {
-		this.politicalGroupService = politicalGroupService;
-	}
-	
-	@GetMapping (path = "/list")
-	public List<PoliticalGroup> getPoliticalGroups(){
-		return politicalGroupService.getPoliticalGroups();
-	}
-	
-	@GetMapping (path = "/memberByID/{id}")
-	public List<Candidate> showMembers(@PathVariable long id){
-		PoliticalGroup group = politicalGroupService.findById(id);
-		return politicalGroupService.showMembers(group);
-	}
-	
-	@GetMapping (path = "/memberByName/{firstname}")
-	public Optional<Candidate> showCandidateByFirstName(@PathVariable String firstname){
-		return politicalGroupService.showCandidateByFirstName(firstname);
-	}
-	
-	@PostMapping ("/add")
-	public void registerNewPoliticalGroup(@RequestBody PoliticalGroup politicalGroup) {
-		politicalGroupService.addNewPoliticalGroup(politicalGroup);
-	}
+    private final PoliticalGroupService politicalGroupService;
+
+    @Autowired
+    public PoliticalGroupController(PoliticalGroupService politicalGroupService) {
+        this.politicalGroupService = politicalGroupService;
+    }
+
+    @GetMapping(path = "/list")
+    public List<PoliticalGroup> getPoliticalGroups() {
+        return politicalGroupService.getPoliticalGroups();
+    }
+
+    @GetMapping(path = "/members/{id}")
+    public List<Candidate> showMembers(@PathVariable long id) {
+        // checken of id bestaat
+        Optional<PoliticalGroup> group = politicalGroupService.findById(id);
+        if (group.isPresent())
+            return politicalGroupService.showMembers(group.get());
+        else
+            return null;
+    }
+
+    @PostMapping("/add")
+    public void registerNewPoliticalGroup(@RequestBody PoliticalGroup politicalGroup) {
+        politicalGroupService.addNewPoliticalGroup(politicalGroup);
+    }
+
+    @GetMapping("{id}")
+    public PoliticalGroup getById(@PathVariable Long id) {
+        if (politicalGroupService.findById(id).isPresent()) {
+            return politicalGroupService.findById(id).get();
+        }
+        return null;
+    }
 }

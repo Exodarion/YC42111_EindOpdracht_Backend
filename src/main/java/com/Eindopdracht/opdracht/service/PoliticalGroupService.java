@@ -39,7 +39,7 @@ public class PoliticalGroupService
 		return candidateRepository.findByFirstName(firstname);
 	}
 	
-	public PoliticalGroup findById(long id) {
+	public Optional<PoliticalGroup> findById(long id) {
 		return politicalGroupRepository.findById(id).get();
 	}
 
