@@ -8,7 +8,6 @@ import com.Eindopdracht.opdracht.model.Candidate;
 import com.Eindopdracht.opdracht.model.PoliticalGroup;
 
 public interface CandidateRepository extends JpaRepository<Candidate, Long> {
-	
 	//Return a list of candidates by giving the political group of the Candidate
 	List<Candidate> findByPoliticalGroup (PoliticalGroup politicalGroup);
 	

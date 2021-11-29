@@ -18,7 +18,7 @@ import com.Eindopdracht.opdracht.model.PoliticalGroup;
 import com.Eindopdracht.opdracht.service.PoliticalGroupService;
 
 @RestController
-@CrossOrigin (maxAge = 3600)
+@CrossOrigin(maxAge = 3600)
 @RequestMapping(path = "/politicalGroup")
 public class PoliticalGroupController {
 	private final PoliticalGroupService politicalGroupService;
