@@ -25,9 +25,9 @@ public class CandidateService {
 	}
 	
 
-//	public List<Candidate> getCandidatesByParty (PoliticalGroup politicalGroup){
-//		return candidateRepository.findByPoliticalParty(politicalGroup);
-//	}
+	public List<Candidate> getCandidatesByParty (PoliticalGroup politicalGroup){
+		return candidateRepository.findByPoliticalGroup(politicalGroup);
+	}
 
 	public void addNewCandidate(Candidate candidate) {
 		candidateRepository.save(candidate);
