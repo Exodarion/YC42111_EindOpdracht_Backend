@@ -13,7 +13,7 @@ public class CandidateDTO {
 	private String politicalGroupName;
 	private LocalDate dob;
 	
-	public CandidateDTO() {}
+	CandidateDTO() {}
 	public CandidateDTO(Candidate candidate) 
 	{
 		PoliticalGroup pg = candidate.getPoliticalGroup(); //cache reference to political group first
