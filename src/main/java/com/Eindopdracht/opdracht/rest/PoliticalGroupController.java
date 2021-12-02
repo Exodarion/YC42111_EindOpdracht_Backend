@@ -48,7 +48,7 @@ public class PoliticalGroupController {
 		return tempList;
 	}
 	
-	@GetMapping (path = "/memberByName/{firstname}")
+	@GetMapping (path = "/memberByFirstName/{firstname}")
 	public CandidateDTO showCandidateFirstName(@PathVariable String firstname)
 	{	
 		//Get this Optional<Candidate> by its firstname and save into a regular Candidate object by using '.get()'
