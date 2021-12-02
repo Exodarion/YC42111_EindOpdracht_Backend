@@ -1,5 +1,6 @@
 package com.Eindopdracht.opdracht.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,14 +34,18 @@ public class PoliticalGroupController {
 		return politicalGroupService.getPoliticalGroups();
 	}
 	
-	@GetMapping (path = "/memberByID/{id}")
-	public List<Candidate> showMembers(@PathVariable long id){
-		// checken of id bestaat
-		Optional <PoliticalGroup> group = politicalGroupService.findById(id);
-		if (group.isPresent())
-			return politicalGroupService.showMembers(group.get());
-		else
-			return null;
+	@GetMapping (path = "/membersByPartyID/{id}")
+	public List<CandidateDTO> showMembers(@PathVariable long id)
+	{	
+		//Get this Optional<PoliticalGroup> by its id and save into a regular PoliticalGroup object by using '.get()'
+		PoliticalGroup group = politicalGroupService.findPoliticalGroupById(id).get();
+		
+		//fill a tempList with candidateDTO's, by looping over the original Candidate objects
+		List<CandidateDTO> tempList = new ArrayList<CandidateDTO>();
+		for(Candidate candidate : politicalGroupService.showMembersFromPoliticalGroup(group))
+			tempList.add(new CandidateDTO(candidate));
+		
+		return tempList;
 	}
 	
 	@GetMapping (path = "/memberByName/{firstname}")
@@ -49,19 +54,8 @@ public class PoliticalGroupController {
 		//Get this Optional<Candidate> by its firstname and save into a regular Candidate object by using '.get()'
 		Candidate candidate = politicalGroupService.findCandidateByFirstName(firstname).get();
 		
-		//Get the political group reference from the candidate
-		PoliticalGroup pg = candidate.getPoliticalGroup();
-		
-		//instantiate new DTO from the Candidate
-		return new CandidateDTO
-		(
-			candidate.getId(),
-			candidate.getFirstName(),
-			candidate.getLastName(),
-			pg.getId(),
-			pg.getName(),
-			candidate.getDob()
-		);		
+		//return the DTO from the Candidate, rather than the original Candidate object itself
+		return new CandidateDTO(candidate);		
 	}
 	
 	@PostMapping ("/add")

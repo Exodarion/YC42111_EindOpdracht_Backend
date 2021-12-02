@@ -3,6 +3,7 @@ package com.Eindopdracht.opdracht.dto;
 import java.time.LocalDate;
 
 import com.Eindopdracht.opdracht.model.Candidate;
+import com.Eindopdracht.opdracht.model.PoliticalGroup;
 
 public class CandidateDTO {
 	private long id;
@@ -15,18 +16,16 @@ public class CandidateDTO {
 	public CandidateDTO() {}
 	public CandidateDTO(Candidate candidate) 
 	{
+		PoliticalGroup pg = candidate.getPoliticalGroup(); //cache reference to political group first
+		
+		// assign data from the given Candidate inside the DTO constructor
+		this.id = candidate.getId();
 		this.firstName = candidate.getFirstName();
 		this.lastName = candidate.getLastName();
+		this.partyID = pg.getId();
+		this.politicalGroupName = pg.getName();
+		this.dob = candidate.getDob(); 
 	};
-	public CandidateDTO(long id, String firstName, String lastName, long partyID, String politicalGroupName, LocalDate dob) 
-	{
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.partyID = partyID;
-		this.politicalGroupName = politicalGroupName;
-		this.dob = dob; 
-	} 
 	
 	public long getId() {
 		return id;

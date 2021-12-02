@@ -31,7 +31,7 @@ public class PoliticalGroupService
 		politicalGroupRepository.save(politicalGroup);
 	}
 	
-	public List<Candidate> showMembers(PoliticalGroup politicalGroup){
+	public List<Candidate> showMembersFromPoliticalGroup(PoliticalGroup politicalGroup){
 		return candidateRepository.findByPoliticalGroup(politicalGroup);
 	}
 	
@@ -39,7 +39,7 @@ public class PoliticalGroupService
 		return candidateRepository.findByFirstName(firstname);
 	}
 	
-	public Optional<PoliticalGroup> findById(long id) {
+	public Optional<PoliticalGroup> findPoliticalGroupById(long id) {
 		return politicalGroupRepository.findById(id);
 	}
 
