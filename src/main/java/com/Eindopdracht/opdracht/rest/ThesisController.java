@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,6 @@ public class ThesisController {
 	
 	@Autowired
 	public ThesisController(ThesisService thesisService) {
-		super ();
 		this.thesisService = thesisService;
 	}
 	
@@ -40,36 +40,14 @@ public class ThesisController {
 	
 	
 	@DeleteMapping(path = "/remove/{id}")
-	public void removeThesis(@RequestBody long id) {
-		if (thesisService.findById(id).isPresent()) {
-			thesisService.removeThesis(id);
-		} 
-			
+	public void removeThesis(@PathVariable long id) {
+			thesisService.removeThesis(id);		
 	}
 	
-	@PutMapping(path = "/change/{id}/{question}")
-	public void changeThesis(@RequestBody long id, String question) {
-		if (thesisService.findById(id).isPresent()) {
-			thesisService.changeThesis(id, question);
-		}
+	@PutMapping(path = "/change/{id}")
+	public void changeThesis(@RequestBody Thesis thesis, @PathVariable long id) {
+		thesisService.updateThesis(id, thesis.getQuestion());
 	}
-	
-//	@PostMapping(path = "/remove/{id}")
-//	public void removeThesis(@RequestBody long id) {
-//		Optional<Thesis> thesis = thesisService.findById(id);
-//		if (thesis.isPresent())
-//			thesisService.removeThesis(id);
-//		
-//	}
-//	
-//	@PostMapping (path = /change/{id}{question})
-//	
-////	
-//	@PostMapping(path = "/change")
-//		public void changeThesis(@RequestBody Thesis thesis) {
-//		thesisService.changeThesis(thesis);
-//	}
-//	
 	
 
 }

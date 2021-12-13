@@ -34,22 +34,27 @@ public class ThesisService {
 	}
 	
 	public void removeThesis(long id) {
-		thesisRepository.deleteById(id);
-		
+		if (thesisRepository.existsById(id)) {
+			thesisRepository.deleteById(id);
+		} else
+			System.out.println("User not found by id:" + id);		
 	}
 	
-		
-	public void changeThesis(long id, String question) {
-		thesisRepository.getById(id).setQuestion(question);
-		thesisRepository.save(thesisRepository.getById(id));
+	public void updateThesis(long id, String question) {
+		// zoek het object
+		Optional<Thesis> optionalThesis = thesisRepository.findById(id);
+		if (optionalThesis.isPresent()) {
+			// pas velden aan
+			Thesis thesis = optionalThesis.get();
+			thesis.setQuestion(question);
+			
+			// sla thesis op
+			thesisRepository.save(thesis);
+			
+			System.out.println("Thesis updated");
+		} else {
+			System.out.println("Thesis not found with id: " + id);
+		}
 	}
-
 	
-	/* mooier zou zijn via id evt via onderstaand? **Eva**
-	 * public void changeThesis(Long id){
-	 * thesisToChange = thesisRepository.getOne(id);
-	 * thesisToChange.setQuestion(thesisDto.getName); ??? waarom hier dan een get vanuit dto moet komen
-	 * thesisRepository.save(thesisToChange);
-	 * */
-	 
 }
