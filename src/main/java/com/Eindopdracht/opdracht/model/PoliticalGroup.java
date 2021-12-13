@@ -23,6 +23,7 @@ public class PoliticalGroup
 	@Column(name = "id")
     private Long id;
 	
+	@Column(unique = true)
 	private String name;
 	
 	@OneToMany(mappedBy = "politicalGroup")
