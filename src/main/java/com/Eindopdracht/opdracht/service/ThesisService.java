@@ -25,7 +25,7 @@ public class ThesisService {
 	}
 
 
-	public List<Thesis> showThesises() {
+	public List<Thesis> getThesises() {
 		return thesisRepository.findAll();
 	}
 	
@@ -56,5 +56,20 @@ public class ThesisService {
 			System.out.println("Thesis not found with id: " + id);
 		}
 	}
+
+
+
+//	public Thesis showOneThesis(long id) {
+//		
+//		Optional<Thesis> optionalThesis = thesisRepository.findById(id);
+//		if (optionalThesis.isPresent()) {
+//			Thesis thesis = optionalThesis.get();
+//			return thesis;
+//		} else {
+//			if (id == -1) {
+//				
+//			}
+//		}
+	}
 	
-}
+

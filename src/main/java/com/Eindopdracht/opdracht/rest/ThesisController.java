@@ -31,12 +31,29 @@ public class ThesisController {
 	@PostMapping(path = "/add")
 	public void registerThesis(@RequestBody Thesis thesis) {
 		thesisService.registerThesis(thesis);
+		// de vraag moet toegevoegd worden aan politialGroup.lijst en voter.lijst
 	}
 	
 	@GetMapping(path = "/list")
 	public List<Thesis> showThesises(){
-		return thesisService.showThesises();
+		return thesisService.getThesises();
 	}
+	
+	@GetMapping(path = "/showByOne/{count}")
+	public Thesis showFirstThesis(@PathVariable int count) {
+		List<Thesis> vragen= thesisService.getThesises();
+		if (count == -1) {
+			return vragen.get(0);
+		} else if (count > 0 && count < vragen.size()) {
+			return vragen.get(count);
+		} else
+			return vragen.get(vragen.size()-1);
+		
+	}
+//	public Thesis showOneThesis(@PathVariable long id) {
+//		return thesisService.showOneThesis(id);
+//	}
+	
 	
 	
 	@DeleteMapping(path = "/remove/{id}")
