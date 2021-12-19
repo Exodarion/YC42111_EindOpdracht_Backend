@@ -27,7 +27,10 @@ public class PoliticalGroupService
 		return politicalGroupRepository.findAll();
 	}
 	
-	public void addNewPoliticalGroup(PoliticalGroup politicalGroup) {
+	public void addNewPoliticalGroup (PoliticalGroup politicalGroup) throws Exception{
+		if (politicalGroupRepository.existsByNameIgnoreCase(politicalGroup.getName())) {
+			throw new Exception("Partij bestaat al");
+		} else
 		politicalGroupRepository.save(politicalGroup);
 	}
 	

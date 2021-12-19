@@ -65,7 +65,12 @@ public class PoliticalGroupController {
 	}
 	
 	@PostMapping ("/add")
-	public void registerNewPoliticalGroup(@RequestBody PoliticalGroup politicalGroup) {
-		politicalGroupService.addNewPoliticalGroup(politicalGroup);
+	public int registerNewPoliticalGroup(@RequestBody PoliticalGroup politicalGroup) {
+		try {
+			politicalGroupService.addNewPoliticalGroup(politicalGroup);
+			return 0;
+		} catch (Exception e) {
+			return 1;
+		}
 	}
 }
