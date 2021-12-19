@@ -12,6 +12,7 @@ public class CandidateDTO {
 	private long partyID;
 	private String politicalGroupName;
 	private LocalDate dob;
+	private String expertise;
 	
 	CandidateDTO() {}
 	public CandidateDTO(Candidate candidate) 
@@ -25,6 +26,7 @@ public class CandidateDTO {
 		this.partyID = pg.getId();
 		this.politicalGroupName = pg.getName();
 		this.dob = candidate.getDob(); 
+		this.expertise = candidate.getExpertise();
 	};
 	
 	public long getId() {
