@@ -15,9 +15,7 @@ public class Thesis {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String question;
-	@Enumerated(EnumType.STRING)
-	private AnswersThesis answers;
-	
+		
 		public Thesis() {
 	}
 		public Thesis (String question) {
@@ -35,15 +33,6 @@ public class Thesis {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	public AnswersThesis getAnswers() {
-		return answers;
-	}
-	public void setAnswers(AnswersThesis answers) {
-		this.answers = answers;
-	}
-	
-	
-	
-	
+
 
 }
