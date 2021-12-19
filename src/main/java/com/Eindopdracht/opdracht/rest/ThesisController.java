@@ -31,8 +31,7 @@ public class ThesisController {
 	@PostMapping(path = "/add")
 	public void registerThesis(@RequestBody Thesis thesis) {
 		thesisService.registerThesis(thesis);
-		// de vraag moet toegevoegd worden aan politialGroup.lijst en voter.lijst
-	}
+		}
 	
 	@GetMapping(path = "/list")
 	public List<Thesis> showThesises(){
@@ -42,7 +41,6 @@ public class ThesisController {
 	@GetMapping(path = "/showByOne/{count}")
 	public Thesis showFirstThesis(@PathVariable int count) {
 		List<Thesis> vragen= thesisService.getThesises();
-		System.out.println("Hoi");
 		if (count == -1) {
 			return vragen.get(0);
 		} else if (count > 0 && count < vragen.size()) {
