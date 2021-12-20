@@ -12,8 +12,9 @@ public class CandidateDTO {
 	private long partyID;
 	private String politicalGroupName;
 	private LocalDate dob;
+	private String expertise;
 	
-	public CandidateDTO() {}
+	CandidateDTO() {}
 	public CandidateDTO(Candidate candidate) 
 	{
 		PoliticalGroup pg = candidate.getPoliticalGroup(); //cache reference to political group first
@@ -25,6 +26,7 @@ public class CandidateDTO {
 		this.partyID = pg.getId();
 		this.politicalGroupName = pg.getName();
 		this.dob = candidate.getDob(); 
+		this.expertise = candidate.getExpertise();
 	};
 	
 	public long getId() {

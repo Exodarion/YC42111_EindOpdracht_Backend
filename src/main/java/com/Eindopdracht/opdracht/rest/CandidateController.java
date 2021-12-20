@@ -1,5 +1,6 @@
 package com.Eindopdracht.opdracht.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Eindopdracht.opdracht.dto.CandidateDTO;
 import com.Eindopdracht.opdracht.model.Candidate;
 import com.Eindopdracht.opdracht.model.PoliticalGroup;
 import com.Eindopdracht.opdracht.service.CandidateService;
@@ -34,9 +36,12 @@ public class CandidateController {
 	}
 	
 	@GetMapping("/list")
-	public List<Candidate> getCandidates(){
-
-		return candidateService.getCandidatesFindAll();
-
+	public List<CandidateDTO> getCandidates()
+	{
+		List<CandidateDTO> tempList = new ArrayList<CandidateDTO>();
+		for(Candidate candidate : candidateService.getCandidatesFindAll()) {
+			tempList.add(new CandidateDTO(candidate));
+		}					
+		return tempList;
 	}
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Eindopdracht.opdracht.dto.CandidateDTO;
+import com.Eindopdracht.opdracht.dto.PoliticalGroupDTO;
 import com.Eindopdracht.opdracht.model.Candidate;
 import com.Eindopdracht.opdracht.model.PoliticalGroup;
 import com.Eindopdracht.opdracht.service.PoliticalGroupService;
@@ -30,8 +31,13 @@ public class PoliticalGroupController {
 	}
 	
 	@GetMapping (path = "/list")
-	public List<PoliticalGroup> getPoliticalGroups(){
-		return politicalGroupService.getPoliticalGroups();
+	public List<PoliticalGroupDTO> getPoliticalGroups()
+	{		
+		List<PoliticalGroupDTO> tempList = new ArrayList<PoliticalGroupDTO>();
+		for(PoliticalGroup pg : politicalGroupService.getPoliticalGroups())
+			tempList.add(new PoliticalGroupDTO(pg));
+		
+		return tempList;
 	}
 	
 	@GetMapping (path = "/membersByPartyID/{id}")
