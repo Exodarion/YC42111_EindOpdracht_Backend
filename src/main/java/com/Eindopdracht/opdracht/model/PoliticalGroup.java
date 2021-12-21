@@ -16,51 +16,61 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class PoliticalGroup 
-{
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
+public class PoliticalGroup {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-	
-	@Column(unique = true)
-	private String name;
-	
-	@OneToMany(mappedBy = "politicalGroup")
-	private List<Candidate> members;
-	
-	@Enumerated(EnumType.STRING )
-	PoliticalGroupAlignment pga;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(unique = true)
+    private String name;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @OneToMany(mappedBy = "politicalGroup")
+    private List<Candidate> members;
 
-	public String getName() {
-		return name;
-	}
+    @Enumerated(EnumType.STRING)
+    PoliticalGroupAlignment pga;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @OneToMany
+    private List<Answer> answers;
 
-	public List<Candidate> getMembers() {
-		return members;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setMembers(List<Candidate> members) {
-		this.members = members;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public PoliticalGroupAlignment getPga() {
-		return pga;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPga(PoliticalGroupAlignment pga) {
-		this.pga = pga;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Candidate> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Candidate> members) {
+        this.members = members;
+    }
+
+    public PoliticalGroupAlignment getPga() {
+        return pga;
+    }
+
+    public void setPga(PoliticalGroupAlignment pga) {
+        this.pga = pga;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
 }
