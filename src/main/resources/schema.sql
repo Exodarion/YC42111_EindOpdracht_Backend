@@ -1,0 +1,3 @@
+-- create table political_group_answers (political_group_id bigint not null, answers_id bigint not null);
+-- alter table political_group_answers add constraint FKilr703fyjt4842oud8gxsrxfp foreign key (answers_id) references answer (id);
+-- alter table political_group_answers add constraint FKrtsbq04msmnd9ckqraaw6y88l foreign key (political_group_id) references political_group (id);

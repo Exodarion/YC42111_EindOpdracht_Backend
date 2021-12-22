@@ -29,6 +29,12 @@ public class CandidateDTO {
 		this.expertise = candidate.getExpertise();
 	};
 	
+	public String getExpertise() {
+		return expertise;
+	}
+	public void setExpertise(String expertise) {
+		this.expertise = expertise;
+	}
 	public long getId() {
 		return id;
 	}
