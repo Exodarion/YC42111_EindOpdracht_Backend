@@ -41,9 +41,10 @@ public class ThesisController {
 	@GetMapping(path = "/showByOne/{count}")
 	public Thesis showFirstThesis(@PathVariable int count) {
 		List<Thesis> vragen= thesisService.getThesises();
-		if (count == -1) {
-			return vragen.get(0);
-		} else if (count > 0 && count < vragen.size()) {
+//		if (count == -1) {
+//			return vragen.get(0);
+//		} else 
+		if (count >= 0 && count < vragen.size()) {
 			return vragen.get(count);
 		} else
 			return vragen.get(vragen.size()-1);

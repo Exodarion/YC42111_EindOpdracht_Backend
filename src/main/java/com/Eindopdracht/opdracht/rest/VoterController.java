@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Eindopdracht.opdracht.model.Answer;
 import com.Eindopdracht.opdracht.model.Voter;
 import com.Eindopdracht.opdracht.service.VoterService;
 
@@ -19,6 +21,7 @@ import com.Eindopdracht.opdracht.service.VoterService;
 @RequestMapping(path = "/voter")
 public class VoterController {
 	private final VoterService voterService;
+	
 	
 	@Autowired
 	 public VoterController(VoterService voterService) {
@@ -31,8 +34,23 @@ public class VoterController {
 		
 	}
 	
-	@PostMapping ("/add")
-	public void registerNewVoter(@RequestBody Voter voter) {
+	@PostMapping (path = "/add")
+	public Voter registerNewVoter(@RequestBody Voter voter) {
 		voterService.addNewVoter(voter);
+		return voter;
 	}
+	
+//	@GetMapping(path = "showOne/{voterid}")
+//	public Voter showOneVoter(@PathVariable Long voterid) {
+//		return voterService.getOne(voterid);
+//	}
+	
+	@GetMapping (path = "showAnswers/{voterid}")
+	public List<Answer> showAnswers(@PathVariable long voterid){
+		Voter voter = voterService.getOne(voterid);
+		return voter.getAnswers();
+		
+	}
+	
+		
 }
