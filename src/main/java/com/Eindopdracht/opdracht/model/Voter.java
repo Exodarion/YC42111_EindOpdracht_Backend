@@ -18,7 +18,8 @@ import java.util.List;
 
 @Entity
 public class Voter {
-    @Id
+    
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -82,4 +83,16 @@ public class Voter {
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
+    
+    public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
+	
+	public void addAnswer(Answer answer) {
+		answers.add(answer);
+	}
 }

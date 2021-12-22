@@ -30,10 +30,15 @@ public class AnswerController {
 		this.answerService = answerService;
 	}
 
-	@PostMapping("/add/{id}")
-	public void registerAnswer (@RequestBody Answer answer, @PathVariable long id) {
+	@PostMapping("/add/{voterId}")
+	public void registerAnswer (@RequestBody Answer answer, @PathVariable long voterId) {
+		answerService.registerAnswer(answer, voterId); 
+	}
+	
+	@PostMapping("/add")
+	public void registerAnswer (@RequestBody Answer answer) {
 		System.out.println("hoi");
-		answerService.registerAnswer(answer, id); 
+		answerService.registerAnswer(answer); 
 	}
 
 	@GetMapping ("/list")
