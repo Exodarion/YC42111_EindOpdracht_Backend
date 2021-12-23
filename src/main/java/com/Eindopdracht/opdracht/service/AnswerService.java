@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Eindopdracht.opdracht.model.Answer;
+import com.Eindopdracht.opdracht.model.PoliticalGroup;
 import com.Eindopdracht.opdracht.model.Thesis;
 import com.Eindopdracht.opdracht.model.Voter;
 import com.Eindopdracht.opdracht.repository.AnswerRepository;
+import com.Eindopdracht.opdracht.repository.PoliticalGroupRepository;
 import com.Eindopdracht.opdracht.repository.ThesisRepository;
 import com.Eindopdracht.opdracht.repository.VoterRepository;
 
@@ -17,12 +19,14 @@ public class AnswerService {
 	private final AnswerRepository answerRepository;
 	private final ThesisRepository thesisRepository;
 	private final VoterRepository voterRepository;
+	private final PoliticalGroupRepository politicalGroupRepository;
 	
 	@Autowired
-	public AnswerService(AnswerRepository answerRepository, ThesisRepository thesisRepository, VoterRepository voterRepository) {
+	public AnswerService(AnswerRepository answerRepository, ThesisRepository thesisRepository, VoterRepository voterRepository, PoliticalGroupRepository politicalGroupRepository) {
 		this.answerRepository = answerRepository;
 		this.thesisRepository = thesisRepository;
 		this.voterRepository = voterRepository;
+		this.politicalGroupRepository = politicalGroupRepository;
 		
 	}
 
@@ -39,6 +43,14 @@ public class AnswerService {
 
 	public List<Answer> showAnswers() {
 		return answerRepository.findAll();
+	}
+
+	public void registerAnswerPoliticalGroup(Answer answer, long politicalGroupId) {
+		answerRepository.save(answer);
+		PoliticalGroup politicalGroup = politicalGroupRepository.getById(politicalGroupId);
+		politicalGroup.addAnswer(answer);
+		politicalGroupRepository.save(politicalGroup);
+		
 	}
 
 
