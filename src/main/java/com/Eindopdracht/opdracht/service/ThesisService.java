@@ -34,10 +34,7 @@ public class ThesisService {
 	}
 	
 	public void removeThesis(long id) {
-		if (thesisRepository.existsById(id)) {
 			thesisRepository.deleteById(id);
-		} else
-			System.out.println("User not found by id:" + id);		
 	}
 	
 	public void updateThesis(long id, String question) {
