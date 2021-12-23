@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.Eindopdracht.opdracht.model.Candidate;
 import com.Eindopdracht.opdracht.model.PoliticalGroup;
+import com.Eindopdracht.opdracht.model.Voter;
 import com.Eindopdracht.opdracht.repository.CandidateRepository;
 import com.Eindopdracht.opdracht.repository.PoliticalGroupRepository;
 
@@ -21,6 +22,10 @@ public class PoliticalGroupService
 		super();
 		this.politicalGroupRepository = politicalGroupRepository;
 		this.candidateRepository = candidateRepository;
+	}
+	
+	public PoliticalGroup getOne(long politicalgroupid) {
+		return politicalGroupRepository.getById((long) politicalgroupid);
 	}
 
 	public List<PoliticalGroup> getPoliticalGroups(){

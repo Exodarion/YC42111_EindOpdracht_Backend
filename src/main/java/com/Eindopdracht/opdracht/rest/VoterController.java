@@ -40,10 +40,6 @@ public class VoterController {
 		return voter;
 	}
 	
-//	@GetMapping(path = "showOne/{voterid}")
-//	public Voter showOneVoter(@PathVariable Long voterid) {
-//		return voterService.getOne(voterid);
-//	}
 	
 	@GetMapping (path = "showAnswers/{voterid}")
 	public List<Answer> showAnswers(@PathVariable long voterid){
