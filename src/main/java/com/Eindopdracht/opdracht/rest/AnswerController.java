@@ -30,9 +30,14 @@ public class AnswerController {
 		this.answerService = answerService;
 	}
 
-	@PostMapping("/add/{voterId}")
+	@PostMapping("/voter/add/{voterId}")
 	public void registerAnswer (@RequestBody Answer answer, @PathVariable long voterId) {
 		answerService.registerAnswer(answer, voterId); 
+	}
+	
+	@PostMapping("/politicalgroup/add/{politicalGroupId}")
+	public void registerAnswerPoliticalgroup (@RequestBody Answer answer, @PathVariable long politicalGroupId) {
+		answerService.registerAnswerPoliticalGroup(answer, politicalGroupId); 
 	}
 	
 	@PostMapping("/add")

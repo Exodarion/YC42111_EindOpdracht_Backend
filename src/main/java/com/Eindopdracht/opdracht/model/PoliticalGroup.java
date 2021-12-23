@@ -73,4 +73,7 @@ public class PoliticalGroup {
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
+    public void addAnswer(Answer answer) {
+		answers.add(answer);
+	}
 }
