@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table
 public class PoliticalGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
