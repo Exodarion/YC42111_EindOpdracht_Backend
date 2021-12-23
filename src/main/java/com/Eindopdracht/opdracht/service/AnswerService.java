@@ -1,5 +1,6 @@
 package com.Eindopdracht.opdracht.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,52 @@ public class AnswerService {
 		
 	}
 
+//	public void registerAnswer(Answer answer, long id) {
+//		answerRepository.save(answer);
+//		Voter voter = voterRepository.getById(id);
+//		voter.addAnswer(answer);
+//		voterRepository.save(voter);
+//	}
+	
 	public void registerAnswer(Answer answer, long id) {
-		answerRepository.save(answer);
 		Voter voter = voterRepository.getById(id);
+		
+		List<Answer> voterAnswers = voter.getAnswers();
+		
+		for (int i = 0; i < voterAnswers.size(); i++) {
+			if(voterAnswers.get(i).getThesis().equals(answer.getThesis())) {
+				// verwijder oude antwoord
+				answerRepository.deleteById(voterAnswers.get(i).getId());
+				voterAnswers.remove(i);	
+				voter.setAnswers(voterAnswers);
+			}	
+		}
+		
+		answerRepository.save(answer);
 		voter.addAnswer(answer);
 		voterRepository.save(voter);
+	}
+	
+	
+	public void registerAnswerPoliticalGroup(Answer answer, long politicalGroupId) {
+		PoliticalGroup politicalGroup = politicalGroupRepository.getById(politicalGroupId);
+		
+		List<Answer> politicalGroupAnswers = politicalGroup.getAnswers();
+		
+		for (int i = 0; i < politicalGroupAnswers.size(); i++) {
+			if(politicalGroupAnswers.get(i).getThesis().equals(answer.getThesis())) {
+				// verwijder oude antwoord bij antwoorden
+				answerRepository.deleteById(politicalGroupAnswers.get(i).getId());
+				//verwijder antwoord uit de lijst met antwoorden van de partij
+				politicalGroupAnswers.remove(i);	
+				politicalGroup.setAnswers(politicalGroupAnswers);
+			}	
+		}
+		
+		answerRepository.save(answer);
+		politicalGroup.addAnswer(answer);
+		politicalGroupRepository.save(politicalGroup);
+		
 	}
 	
 	public void registerAnswer(Answer answer) {
@@ -44,15 +86,6 @@ public class AnswerService {
 	public List<Answer> showAnswers() {
 		return answerRepository.findAll();
 	}
-
-	public void registerAnswerPoliticalGroup(Answer answer, long politicalGroupId) {
-		answerRepository.save(answer);
-		PoliticalGroup politicalGroup = politicalGroupRepository.getById(politicalGroupId);
-		politicalGroup.addAnswer(answer);
-		politicalGroupRepository.save(politicalGroup);
-		
-	}
-
 
 
 }
