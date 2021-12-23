@@ -41,10 +41,15 @@ public class AnswerService {
 	public void registerAnswer(Answer answer, long id) {
 		Voter voter = voterRepository.getById(id);
 		
-		List<Answer> voterAnswers = voter.getAnswers();
 		
+		List<Answer> voterAnswers = voter.getAnswers();
+				
+//		System.out.println("Wat staat hier: " + );
+//		System.out.println("Vergelijking " +  );
+//		
 		for (int i = 0; i < voterAnswers.size(); i++) {
-			if(voterAnswers.get(i).getThesis().equals(answer.getThesis())) {
+			if(voterAnswers.get(i).getThesis().getId() == answer.getThesis().getId()) {
+				
 				// verwijder oude antwoord
 				answerRepository.deleteById(voterAnswers.get(i).getId());
 				voterAnswers.remove(i);	
@@ -64,7 +69,9 @@ public class AnswerService {
 		List<Answer> politicalGroupAnswers = politicalGroup.getAnswers();
 		
 		for (int i = 0; i < politicalGroupAnswers.size(); i++) {
-			if(politicalGroupAnswers.get(i).getThesis().equals(answer.getThesis())) {
+			if(politicalGroupAnswers.get(i).getThesis().getId() == answer.getThesis().getId()) {
+				
+				
 				// verwijder oude antwoord bij antwoorden
 				answerRepository.deleteById(politicalGroupAnswers.get(i).getId());
 				//verwijder antwoord uit de lijst met antwoorden van de partij
