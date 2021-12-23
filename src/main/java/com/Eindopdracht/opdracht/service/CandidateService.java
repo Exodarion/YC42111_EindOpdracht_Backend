@@ -34,5 +34,10 @@ public class CandidateService {
 		
 	}
 	
-	
+	public void removeCandidate(long id) {
+		if (candidateRepository.existsById(id)) 
+			candidateRepository.deleteById(id);
+		else
+			System.out.println("User not found by id:" + id);		
+	}	
 }

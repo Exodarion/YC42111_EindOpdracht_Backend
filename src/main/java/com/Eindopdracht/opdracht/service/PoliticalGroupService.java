@@ -46,4 +46,10 @@ public class PoliticalGroupService
 		return politicalGroupRepository.findById(id);
 	}
 
+	public void removePoliticalGroup(long id) {
+		if (politicalGroupRepository.existsById(id)) 
+			politicalGroupRepository.deleteById(id);
+		else
+			System.out.println("User not found by id:" + id);		
+	}
 }
