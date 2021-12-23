@@ -57,7 +57,7 @@ public class AdviceService {
         for (String key : differences.keySet()) {
             double value1 = differences.get(key).get(0);
             double value2 = differences.get(key).get(1);
-            double percentage = 1 - (value2 / 4 * value1);
+            double percentage = 1 - (value2 / 4) / value1;
             long perc = Math.round(percentage * 100);
             if (differences.get(key).get(0) > 0) {
                 results.put(key, perc);
