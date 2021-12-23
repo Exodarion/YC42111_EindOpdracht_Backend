@@ -46,8 +46,13 @@ public class ThesisController {
 //		} else 
 		if (count >= 0 && count < vragen.size()) {
 			return vragen.get(count);
-		} else
-			return vragen.get(vragen.size()-1);
+		} else {
+			Thesis thesis = new Thesis();
+			thesis.setId(-23l);
+			return thesis;
+		}
+			
+			
 		
 	}
 //	public Thesis showOneThesis(@PathVariable long id) {

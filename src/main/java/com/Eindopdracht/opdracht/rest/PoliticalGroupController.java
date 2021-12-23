@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Eindopdracht.opdracht.dto.CandidateDTO;
 import com.Eindopdracht.opdracht.dto.PoliticalGroupDTO;
+import com.Eindopdracht.opdracht.model.Answer;
 import com.Eindopdracht.opdracht.model.Candidate;
 import com.Eindopdracht.opdracht.model.PoliticalGroup;
+import com.Eindopdracht.opdracht.model.Voter;
 import com.Eindopdracht.opdracht.service.PoliticalGroupService;
 
 @RestController
@@ -28,6 +30,13 @@ public class PoliticalGroupController {
 	@Autowired
 	public PoliticalGroupController(PoliticalGroupService politicalGroupService) {
 		this.politicalGroupService = politicalGroupService;
+	}
+	
+	@GetMapping (path = "showAnswers/{politicalgroupid}")
+	public List<Answer> showAnswers(@PathVariable long politicalgroupid){
+		PoliticalGroup politicalGroup = politicalGroupService.getOne(politicalgroupid);
+		return politicalGroup.getAnswers();
+				
 	}
 	
 	@GetMapping (path = "/list")
@@ -54,6 +63,14 @@ public class PoliticalGroupController {
 		return tempList;
 	}
 	
+	@GetMapping (path = "/byID/{id}")
+	public PoliticalGroupDTO getPGByID(@PathVariable long id)
+	{	
+		//Get this Optional<PoliticalGroup> by its id and save into a regular PoliticalGroup object by using '.get()'
+		PoliticalGroup group = politicalGroupService.findPoliticalGroupById(id).get();
+		return new PoliticalGroupDTO(group);
+	}
+	
 	@GetMapping (path = "/memberByFirstName/{firstname}")
 	public CandidateDTO showCandidateFirstName(@PathVariable String firstname)
 	{	
@@ -65,7 +82,9 @@ public class PoliticalGroupController {
 	}
 	
 	@PostMapping ("/add")
-	public int registerNewPoliticalGroup(@RequestBody PoliticalGroup politicalGroup) {
+	public int registerNewPoliticalGroup(@RequestBody PoliticalGroup politicalGroup) 
+	{
+		System.out.println(politicalGroup);
 		try {
 			politicalGroupService.addNewPoliticalGroup(politicalGroup);
 			return 0;
